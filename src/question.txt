@@ -1,0 +1,1 @@
+1,java developed by which company?,Microsoft,google,SunmicroSystems,Apple,C
