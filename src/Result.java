@@ -23,10 +23,11 @@ public class Result {
          public void displayresult(){
             System.out.println("\n======================== Result =============================");
             System.out.println("Username :" + username);
-            System.out.println("TotalQuestion :" + totalQuestions);
+            System.out.println("Total Question :" + totalQuestions);
             System.out.println("Correct Answers :" + correctAnswers);
             System.out.println(" Wrong Answers :" + wrongAnswers);
             System.out.println("Percentage : " + percentage);
+             System.out.println("Score     :" + correctAnswers + "/" + totalQuestions);
 
             if(percentage>40){
                 System.out.println("pass");

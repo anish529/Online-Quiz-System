@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.util.Scanner;
 public class QuizService {
     Scanner sc=new Scanner(System.in);
@@ -34,13 +35,33 @@ public class QuizService {
                     System.out.println("Wrong Answer");
                 }
             }
+            int wrongAnswer = totalQuestions - correctAnswers;
+            double percentage=(correctAnswers*100.0)/totalQuestions;
 
-            System.out.println("\n ==== Result ====");
-            System.out.println("Total Questions :" + totalQuestions);
-             System.out.println("Correct Answers :" + correctAnswers);
-              System.out.println("Wrong Answers :" + (totalQuestions-correctAnswers));
-               System.out.println("Score     :" + correctAnswers + "/" + totalQuestions);
-                System.out.println("");
+            Result result = new Result("Anish", totalQuestions, correctAnswers, wrongAnswer, percentage);
+            result.displayresult();
+
+            try{
+                 FileWriter writer = new FileWriter("result.txt",true);
+                 writer.write("Username : Anish\n");
+                 writer.write("Total Question :" + totalQuestions + "\n");
+                    writer.write("Correct Answers :" + correctAnswers + "\n");
+                    writer.write("Wrong Answers :" + wrongAnswer + "\n");
+                       writer.write("Percentage : " + percentage + "\n");
+                          writer.write("Score     :" + correctAnswers + "/" + totalQuestions + "\n");
+                             writer.write("\n");
+                             writer.close();
+            }catch(Exception e){
+                System.out.println("Result File not Found");
+            }
+
+
+            // System.out.println("\n ==== Result ====");
+            // System.out.println("Total Questions :" + totalQuestions);
+            //  System.out.println("Correct Answers :" + correctAnswers);
+            //   System.out.println("Wrong Answers :" + (totalQuestions-correctAnswers));
+            //    System.out.println("Score     :" + correctAnswers + "/" + totalQuestions);
+            //     System.out.println("");
 
             reader.close();
         } catch (Exception e) {
